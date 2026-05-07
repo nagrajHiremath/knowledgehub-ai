@@ -1,69 +1,54 @@
 # KnowledgeHub AI
 
-Platform powered by Retrieval-Augmented Generation (RAG), FastAPI, PostgreSQL, and Ollama LLM. Designed for secure document management, semantic search, and intelligent Q&A over enterprise knowledge.
+KnowledgeHub AI is a simple tool for HR, managers, and business teams to find company information quickly.
 
-## Features
+It stores internal documents such as policies, procedures, and training guides. Then it lets users ask questions in plain language and gives answers based on the documents.
 
-- **User Authentication:** JWT-based login, registration, password reset, and admin controls.
-- **Document Upload & Ingestion:** Supports PDF, DOCX, TXT. Async file handling, semantic chunking, and vector embedding.
-- **Domain Management:** Organize documents by domain (HR, Tech, etc.), upload by domain name.
-- **RAG Pipeline:**
-  - Vector search with pgvector
-  - LLM-based reranking (Ollama, Gemma, Llama3, etc.)
-  - Context optimization and safe prompt engineering
-  - Citations and hallucination guard
-- **Semantic Chunking:** Uses LangChain for sentence/paragraph-aware chunking.
-- **Embeddings:** Uses dedicated embedding models (nomic-embed-text, etc.)
-- **Admin Controls:** Only admins can upload documents, manage domains.
-- **Logging:** Audit logs for uploads, LLM responses, and system actions.
-- **Dockerized:** Full Docker Compose setup for web, database, Ollama, Redis, pgAdmin.
-- **Database:** PostgreSQL with pgvector extension for vector search.
-- **API:** FastAPI async endpoints for document upload, search, and Q&A.
+## What this does for HR and managers
 
-## Tech Stack
+- Helps employees find answers to HR and company policy questions quickly
+- Reduces time spent searching folders, emails, and shared files
+- Keeps knowledge organized by topic, like HR, IT, finance, or legal
+- Makes onboarding and staff support easier
+- Tracks document uploads and questions asked for better visibility
 
-- **Backend:** FastAPI (async), SQLAlchemy (async)
-- **Database:** PostgreSQL + pgvector
-- **Vector Search:** pgvector
-- **LLM:** Ollama
-- **Embeddings:** nomic-embed-text (OLLAMA)
-- **Chunking:** LangChain
-- **Auth:** JWT, passlib
-- **Logging:** loguru, Python logging
-- **Containerization:** Docker, docker-compose
-- **Admin UI:** pgAdmin
+## How it works
 
-## Main Functionalities
+1. Upload documents into the system.
+2. The project breaks documents into smaller parts for better search.
+3. It uses AI to match questions with the most relevant content.
+4. It returns an answer with links to the original document source.
 
-- Secure user authentication and admin management
-- Upload and ingest documents by domain name
-- Semantic chunking and vector embedding
-- RAG pipeline for intelligent Q&A with citations
-- LLM-based reranking and answer generation
-- Context window management and prompt safety
-- Audit logging and error handling
-- Sample document ingestion for quick testing
+## Main features
 
-## Getting Started
+- Secure login for users
+- Upload documents in PDF, DOCX, and TXT formats
+- Organize documents by domain or topic
+- Ask questions and get answers from your knowledge base
+- Includes sample documents for quick testing
+- Can run with Docker for easier setup
 
-1. Clone the repo and set up `.env` with your config.
-2. Run `docker-compose up -d` to start all services.
-3. Access FastAPI endpoints for document upload, search, and Q&A.
-4. Use sample files in `sample_docs/` for testing.
+## Who should use it
 
-## API Endpoints
+- HR teams that want to share policies and procedures clearly
+- Managers who need fast access to employee and company information
+- Teams that want a central place for internal knowledge
 
-- `/auth/login` - User login
-- `/auth/register` - User registration
-- `/auth/reset-password` - Password reset
-- `/documents/upload` - Upload document (by domain name)
-- `/questions/ask` - Ask a question (RAG pipeline)
-- `/domains/` - List domains
+## Simple setup
+
+1. Start the project with Docker.
+2. Upload documents to the right domain.
+3. Ask questions through the `/questions/ask` endpoint.
+4. Try the sample files in `app/utils/sample_docs/` first.
+
+## Helpful endpoints
+
+- `/auth/login` - sign in
+- `/auth/register` - create a user
+- `/documents/upload` - add a document
+- `/questions/ask` - ask a question
+- `/domains/` - list knowledge topics
 
 ## License
 
 MIT
-
----
-
-For more details, see the source code and comments. Contributions welcome!
